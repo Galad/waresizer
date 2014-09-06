@@ -141,8 +141,7 @@ namespace WindowsStoreAssetsResizer
 				destinationPath = optionList[destinationPathIndex + 1];
 				if (!Directory.Exists(destinationPath))
 				{
-					Console.WriteLine("Error. The destination folder does not exist");
-					return;
+					Directory.CreateDirectory(destinationPath);
 				}
 			}
 
@@ -295,7 +294,7 @@ namespace WindowsStoreAssetsResizer
 			Console.WriteLine();
 			Console.WriteLine("/dest : Define the destination folder");
 			Console.WriteLine("/sizes <{0}>", string.Join(",", _sizes.Select(k => k.Key)));
-			Console.WriteLine("Define the asset sizes");
+			Console.WriteLine("Define the manifest asset sizes");
 			Console.WriteLine("/w : The target width of the asset. For custom size.");
 			Console.WriteLine("/h : The target height of the asset. For custom size.");
 			Console.WriteLine("/wpa81 : If using a custom size, use only Windows Phone 8.1 scales.");
