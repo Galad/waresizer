@@ -290,11 +290,13 @@ namespace WindowsStoreAssetsResizer
 		private static void DisplayHelp()
 		{
 			Console.WriteLine();
-			Console.WriteLine("aresizer <source> [/dest <destination path>] [/sizes <size1,size2,..> | /w <width> /h <height> [/wa81] [/wpa81]]");
+			Console.WriteLine("waresizer <source> [/dest <destination path>] [/sizes <size1,size2,..> | /w <width> /h <height> [/wa81] [/wpa81]]");
 			Console.WriteLine();
 			Console.WriteLine("/dest : Define the destination folder");
-			Console.WriteLine("/sizes <{0}>", string.Join(",", _sizes.Select(k => k.Key)));
+			Console.WriteLine("/sizes <{0},..>", string.Join(",", _sizes.Take(2).Select(k => k.Key)));
 			Console.WriteLine("Define the manifest asset sizes");
+			Console.WriteLine("Available sizes are :");
+			Console.WriteLine(string.Join("\n", _sizes.Select(k => k.Key)));
 			Console.WriteLine("/w : The target width of the asset. For custom size.");
 			Console.WriteLine("/h : The target height of the asset. For custom size.");
 			Console.WriteLine("/wpa81 : If using a custom size, use only Windows Phone 8.1 scales.");
